@@ -1,5 +1,11 @@
 # hello serverless
 
+## serverless.yml 配置
+
+deploy 的时候，runtime 可以是 `nodejs12`
+使用 offline 本地调试时，需要时 `nodejs12.x`
+应该是互相有冲突。。。
+
 ## 常用操作
 
 创建服务

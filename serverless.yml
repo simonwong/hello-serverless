@@ -15,15 +15,16 @@ service: hello-serverless # 服务名称
 provider:
   name: aliyun
   region: cn-hangzhou
-  runtime: nodejs10
+  runtime: nodejs12
   credentials: ~/.aliyuncli/credentials # path must be absolute
 
 plugins:
   - serverless-aliyun-function-compute
+  - serverless-offline
 
 package:
   exclude:
-    - package-lock.json
+    - yarn.lock
     - .gitignore
     - .git/**
 
@@ -32,9 +33,33 @@ functions:
   # 函数
   helloSls:
     # 定义了函数路径，即 index 文件的 helloSls 方法
-    handler: index.helloSls
+    handler: hello.helloSls
     events:
       - http:
           path: helloSls # 定义请求路径
           method: get # 接口请求方式
           cors: true # 开始跨域
+  find:
+    handler: app/handler.find
+    events:
+      - http:
+          path: books
+          method: get
+  create:
+    handler: app/handler.create
+    events:
+      - http:
+          path: books
+          method: post
+  deleteOne:
+    handler: app/handler.deleteOne
+    events:
+      - http:
+          path: books/{id}
+          method: delete
+  update:
+    handler: app/handler.update
+    events:
+      - http:
+          path: books/{id}
+          method: put

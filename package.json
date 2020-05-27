@@ -9,6 +9,12 @@
   "author": "alibabacloud.com",
   "license": "MIT",
   "devDependencies": {
-    "serverless-aliyun-function-compute": "*"
+    "serverless-aliyun-function-compute": "*",
+    "serverless-offline": "^6.1.7"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.16"
   }
 }
